@@ -11,6 +11,10 @@ require app_path('Http/routes.php');
 |
 */
 
+Route::get('test', function () {
+    return 'test';
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
