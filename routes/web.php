@@ -1,5 +1,5 @@
 <?php
-require app_path('Http/routes.php');
+//require app_path('Http/routes.php'); // todo-Андрей: Зачем это нужно???
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +11,5 @@ require app_path('Http/routes.php');
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', 'TodomanagerController');
+Route::resource('todomanager', 'TodomanagerController');
