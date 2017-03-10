@@ -24,7 +24,7 @@ class TodomanagerController extends Controller
      * @param TodoManagerService $todoManagerService
      */
     public function __construct(TodoManagerService $todoManagerService)
-    {
+    {   $this->middleware('auth');
         $this->todoManagerService = $todoManagerService;
     }
     /**

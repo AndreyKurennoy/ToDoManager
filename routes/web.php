@@ -13,3 +13,7 @@
 
 Route::resource('/', 'TodomanagerController');
 Route::resource('todomanager', 'TodomanagerController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
