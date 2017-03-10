@@ -1,5 +1,6 @@
 <?php
 namespace App\Services\TodoManagerServices;
+use App\Models\Task;
 
 /**
  * Created by PhpStorm.
@@ -16,6 +17,6 @@ class TodoManagerService
 	 */
 	public function getTasks()
 	{
-		return 123;
+		return Task::all();
 	}
 }
