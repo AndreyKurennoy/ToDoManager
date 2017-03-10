@@ -9,6 +9,11 @@ namespace App\Services\TodoManagerServices;
  */
 class TodoManagerService
 {
+	/**
+	 * Будет получать все таски из БД
+	 * 
+	 * @return int
+	 */
 	public function getTasks()
 	{
 		return 123;

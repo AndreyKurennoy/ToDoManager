@@ -11,4 +11,5 @@
 |
 */
 
+Route::resource('/', 'TodomanagerController');
 Route::resource('todomanager', 'TodomanagerController');

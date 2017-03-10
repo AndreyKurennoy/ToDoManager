@@ -1,14 +1,28 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Services\TodoManagerServices\TodoManagerService;
 use Illuminate\Http\Request;
 
+/**
+ * Контроллер для работы с tod0-manager
+ * 
+ * Class TodomanagerController
+ * @package App\Http\Controllers
+ */
 class TodomanagerController extends Controller
 {
+    /**
+     * Сервис задач
+     * @var TodoManagerService
+     */
     public $todoManagerService;
-    
+
+    /**
+     * TodomanagerController constructor.
+     *
+     * @param TodoManagerService $todoManagerService
+     */
     public function __construct(TodoManagerService $todoManagerService)
     {
         $this->todoManagerService = $todoManagerService;
