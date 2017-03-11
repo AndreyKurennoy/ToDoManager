@@ -2,41 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use MaddHatter\LaravelFullcalendar\Calendar;
+use \MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
 class CalendarController extends Controller
 {
-    public function index()
-    {
-//        $events = [];
-//
-//        $events[] = Calendar::event(
-//            'Event One', //event title
-//            false, //full day event?
-//            '2015-02-11T0800', //start time (you can also use Carbon instead of DateTime)
-//            '2015-02-12T0800', //end time (you can also use Carbon instead of DateTime)
-//            0 //optionally, you can specify an event ID
-//        );
+	public function index()
+	{
+		$events = [];
 
+		$events[] = Calendar::event("Valentine's Day",
+		                            true,
+		                            '2015-02-14',
+		                            '2015-02-14',
+		                            1,
+		                            [
+			                            'url' => 'http://full-calendar.io',
+		                            ]);
 
-        $events[] = Calendar::event( "Valentine's Day", //event title
-        true, //full day event?
-        '2015-02-14', //start time, must be a DateTime object or valid DateTime format (http://bit.ly/1z7QWbg)
-        '2015-02-14', //end time, must be a DateTime object or valid DateTime format (http://bit.ly/1z7QWbg),
-        1, //optional event ID
-        [
-            'url' => 'http://full-calendar.io'
-        ]
-        );
+		$calendar = Calendar::addEvents($events)->setOptions([
+			                                                     'firstday' => 1,
+		                                                     ])->setCallbacks([]);
 
-
-
-
-//        $calendar = Calendar::addEvents($events) //Согласно документации вызов должен происходить статически
-//                            ->setOptions([
-//                                'firstday' => 1
-//                            ])->setCallbacks([]);
-        return view('calendar', compact('calendar'));
-    }
+		return view('calendar', compact('calendar'));
+	}
 }
 

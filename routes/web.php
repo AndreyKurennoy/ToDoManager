@@ -10,13 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::resource('/', 'TodomanagerController');
-Route::resource('todomanager', 'TodomanagerController');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
-
+Route::resource('todomanager', 'TodomanagerController');
 Route::resource('calendar', 'CalendarController');
+
+
+
+
+Route::get('/home', 'HomeController@index');

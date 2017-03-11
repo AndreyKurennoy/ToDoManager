@@ -1,18 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+@extends('index')
+
+@section('title', 'Page Title')
+
+@section('head')
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+@endsection
 
+@section('content')
+    {{--{{dd($calendar)}}--}}
 
-    <style>
-        /* ... */
-    </style>
-</head>
-<body>
-{{--{!! $calendar->calendar() !!}--}}
-{{--{!! $calendar->script() !!}--}}
-</body>
-</html>
+    {!! $calendar->calendar() !!}
+    {!! $calendar->script() !!}
+@endsection
