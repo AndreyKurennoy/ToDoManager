@@ -2,24 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use \MaddHatter\LaravelFullcalendar\Facades\Calendar;
+use \MaddHatter\LaravelFullcalendar\Facades\Calendar as FacadeCalendar;
+use MaddHatter\LaravelFullcalendar\Calendar;
+use \Carbon\Carbon;
 
+/**
+ * Class CalendarController
+ * @package App\Http\Controllers
+ */
 class CalendarController extends Controller
 {
+	/**
+	 * Вывод календаря
+	 * 
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function index()
 	{
 		$events = [];
 
-		$events[] = Calendar::event("Valentine's Day",
+		$events[] = Calendar::event("Day",
 		                            true,
-		                            '2015-02-14',
-		                            '2015-02-14',
-		                            1,
-		                            [
-			                            'url' => 'http://full-calendar.io',
-		                            ]);
+		                            new Carbon('2017-03-10'),
+		                            new Carbon('2017-03-10'));
 
-		$calendar = Calendar::addEvents($events)->setOptions([
+		$calendar = FacadeCalendar::addEvents($events)->setOptions([
 			                                                     'firstday' => 1,
 		                                                     ])->setCallbacks([]);
 

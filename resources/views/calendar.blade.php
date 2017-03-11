@@ -1,6 +1,6 @@
 @extends('index')
 
-@section('title', 'Page Title')
+@section('title', 'Calendar')
 
 @section('head')
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
@@ -9,8 +9,6 @@
 @endsection
 
 @section('content')
-    {{--{{dd($calendar)}}--}}
-
     {!! $calendar->calendar() !!}
     {!! $calendar->script() !!}
 @endsection
