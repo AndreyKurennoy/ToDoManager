@@ -17,3 +17,6 @@ Route::resource('todomanager', 'TodomanagerController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::resource('calendar', 'CalendarController');
