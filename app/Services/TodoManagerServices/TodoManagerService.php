@@ -46,4 +46,12 @@ class TodoManagerService
 
 		return $events;
 	}
+
+	public function saveTask($data)
+	{
+		$task = app(Task::class);
+		$task->fill($data);
+		$task->save();
+		return $task;
+	}
 }

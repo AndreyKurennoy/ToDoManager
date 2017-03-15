@@ -57,7 +57,13 @@ class TodomanagerController extends Controller
 	 */
 	public function create()
 	{
-		//
+		$return = [
+			'popup' => \View::make(
+				'add_task_popup', []
+			)->render(),
+		];
+
+		return \Response::json($return);
 	}
 
 	/**
@@ -69,7 +75,9 @@ class TodomanagerController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//
+		$save = $this->todoManagerService->saveTask($request->all());
+
+		return \Response::json($save);
 	}
 
 	/**
