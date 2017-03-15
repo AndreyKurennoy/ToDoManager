@@ -1,5 +1,4 @@
 <?php
-require app_path('Http/routes.php');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,13 @@ require app_path('Http/routes.php');
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('todomanager', 'TodomanagerController');
+Route::post('todomanager/get-all-events', 'TodomanagerController@getCalendarEvents');
+Route::resource('calendar', 'CalendarController');
+
+
+
+
+Route::get('/home', 'HomeController@index');

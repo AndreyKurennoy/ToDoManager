@@ -1,0 +1,131 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Services\TodoManagerServices\TodoManagerService;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+/**
+ * Контроллер для работы с tod0-manager
+ *
+ * Class TodomanagerController
+ * @package App\Http\Controllers
+ */
+class TodomanagerController extends Controller
+{
+	/**
+	 * Сервис задач
+	 * @var TodoManagerService
+	 */
+	public $todoManagerService;
+
+	/**
+	 * TodomanagerController constructor.
+	 *
+	 * @param TodoManagerService $todoManagerService
+	 */
+	public function __construct(TodoManagerService $todoManagerService)
+	{
+		$this->todoManagerService = $todoManagerService;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		return view('calendar');
+	}
+
+	/**
+	 * Метод для получения всех ивентов
+	 * 
+	 * @return mixed
+	 */
+	public function getCalendarEvents()
+	{
+		$calendar = $this->todoManagerService->getCalendarEvent();
+		return \Response::json(['calendar' => $calendar]);
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		$return = [
+			'popup' => \View::make(
+				'add_task_popup', []
+			)->render(),
+		];
+
+		return \Response::json($return);
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request $request
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		$save = $this->todoManagerService->saveTask($request->all());
+
+		return \Response::json($save);
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int $id
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($id)
+	{
+		//
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int $id
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit($id)
+	{
+		//
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request $request
+	 * @param  int                      $id
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, $id)
+	{
+		//
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int $id
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
+}
