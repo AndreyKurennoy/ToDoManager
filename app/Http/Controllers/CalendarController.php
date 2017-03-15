@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use \MaddHatter\LaravelFullcalendar\Facades\Calendar as FacadeCalendar;
-use MaddHatter\LaravelFullcalendar\Calendar;
-use \Carbon\Carbon;
 
 /**
  * Class CalendarController
@@ -19,18 +16,7 @@ class CalendarController extends Controller
 	 */
 	public function index()
 	{
-		$events = [];
-
-		$events[] = Calendar::event("Day",
-		                            true,
-		                            new Carbon('2017-03-10'),
-		                            new Carbon('2017-03-10'));
-
-		$calendar = FacadeCalendar::addEvents($events)->setOptions([
-			                                                     'firstday' => 1,
-		                                                     ])->setCallbacks([]);
-
-		return view('calendar', compact('calendar'));
+		
 	}
 }
 

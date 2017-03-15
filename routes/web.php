@@ -1,5 +1,4 @@
 <?php
-//require app_path('Http/routes.php'); // todo-Андрей: Зачем это нужно???
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +12,7 @@
 Auth::routes();
 
 Route::resource('todomanager', 'TodomanagerController');
+Route::post('todomanager/get-all-events', 'TodomanagerController@getCalendarEvents');
 Route::resource('calendar', 'CalendarController');
 
 
