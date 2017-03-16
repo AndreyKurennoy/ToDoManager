@@ -89,7 +89,18 @@ class TodomanagerController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+		$task = $this->todoManagerService->findTask($id);
+		
+		$return = [
+			'popup' => \View::make(
+				'add_task_popup', 
+				[
+					'task' => $task,
+				]
+			)->render(),
+		];
+
+		return \Response::json($return);
 	}
 
 	/**
@@ -114,7 +125,9 @@ class TodomanagerController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		$task = $this->todoManagerService->updateTask($id, $request->all());
+
+		return $task;
 	}
 
 	/**

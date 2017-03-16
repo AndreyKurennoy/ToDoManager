@@ -54,4 +54,18 @@ class TodoManagerService
 		$task->save();
 		return $task;
 	}
+
+	public function findTask($id)
+	{
+		return Task::find($id);
+	}
+
+	public function updateTask($id, $data)
+	{
+		$task = $this->findTask($id);
+		$task->fill($data);
+		$task->save();
+
+		return $task;
+	}
 }
