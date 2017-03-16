@@ -24,7 +24,8 @@ class TodoManagerService
 	}
 
 	/**
-	 *
+	 * Получение всех тасков и формирование для календаря
+	 * 
 	 * @return mixed
 	 */
 	public function getCalendarEvent()
@@ -47,6 +48,13 @@ class TodoManagerService
 		return $events;
 	}
 
+	/**
+	 * Сохранение нового таска
+	 * 
+	 * @param $data
+	 *
+	 * @return \Illuminate\Foundation\Application|mixed
+	 */
 	public function saveTask($data)
 	{
 		$task = app(Task::class);
@@ -55,11 +63,26 @@ class TodoManagerService
 		return $task;
 	}
 
+	/**
+	 * Найти таск
+	 * 
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
 	public function findTask($id)
 	{
 		return Task::find($id);
 	}
 
+	/**
+	 * Обновление тасков
+	 * 
+	 * @param $id
+	 * @param $data
+	 *
+	 * @return mixed
+	 */
 	public function updateTask($id, $data)
 	{
 		$task = $this->findTask($id);
@@ -67,5 +90,17 @@ class TodoManagerService
 		$task->save();
 
 		return $task;
+	}
+
+	/**
+	 * Удаление тасков
+	 * 
+	 * @param $id
+	 *
+	 * @return int
+	 */
+	public function destroyTask($id)
+	{
+		return Task::destroy($id);
 	}
 }

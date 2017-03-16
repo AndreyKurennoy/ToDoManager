@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Services\TodoManagerServices\TodoManagerService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -139,6 +140,6 @@ class TodomanagerController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		return $this->todoManagerService->destroyTask($id);
 	}
 }

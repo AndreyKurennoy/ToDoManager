@@ -105,6 +105,20 @@ function editTask() {
 }
 
 /**
+ * Удаление таска
+ */
+function removeTask() {
+    var data = $('#add-task-form').serializeObject();
+    $.ajax({
+        method: 'delete',
+        url: BASE_URL + '/todomanager/' + data.id,
+        success: function (data) {
+            location.href = BASE_URL + '/todomanager/';
+        }
+    });
+}
+
+/**
  * Ждем, когда прогрузится страница
  */
 $(function () {
@@ -113,6 +127,7 @@ $(function () {
         $(document).on("click", '.btn-add-event', createPopup);
         $(document).on("click", '.save-task', saveTask);
         $(document).on("click", '.edit-task', editTask);
+        $(document).on("click", '.remove', removeTask);
     });
 });
 

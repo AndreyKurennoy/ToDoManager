@@ -27,4 +27,5 @@
         </div>
     </div>
     <button type="submit" class="btn btn-default {{isset($task) ? 'edit-task' : 'save-task'}}">Send invitation</button>
+    <button class="btn btn-danger {{isset($task) ? 'remove' : ''}}">Remove</button>
 </form>
