@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TodomanagerRequest;
 use App\Models\Task;
 use App\Services\TodoManagerServices\TodoManagerService;
 use Illuminate\Http\Request;
@@ -74,7 +75,7 @@ class TodomanagerController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(TodomanagerRequest $request)
 	{
 		$save = $this->todoManagerService->saveTask($request->all());
 
@@ -124,7 +125,7 @@ class TodomanagerController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(TodomanagerRequest $request, $id)
 	{
 		$task = $this->todoManagerService->updateTask($id, $request->all());
 
