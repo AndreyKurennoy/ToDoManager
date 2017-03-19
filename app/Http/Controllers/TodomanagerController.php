@@ -38,7 +38,7 @@ class TodomanagerController extends Controller
 	 */
 	public function index()
 	{
-		return view('calendar');
+		return view('calendar.calendar');
 	}
 
 	/**
@@ -61,7 +61,7 @@ class TodomanagerController extends Controller
 	{
 		$return = [
 			'popup' => \View::make(
-				'add_task_popup', []
+				'calendar.add_edit_task_popup', []
 			)->render(),
 		];
 
@@ -95,7 +95,7 @@ class TodomanagerController extends Controller
 		
 		$return = [
 			'popup' => \View::make(
-				'add_task_popup', 
+				'calendar.add_edit_task_popup',
 				[
 					'task' => $task,
 				]

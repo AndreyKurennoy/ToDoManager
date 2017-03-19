@@ -4,6 +4,7 @@
 
 @section('content')
     <h1>Список тасков</h1>
+    <p>Просто заготовка.</p>
     <p>This is my body content.</p>
     @foreach($tasks as $task)
         <h3>{{$task->title}}</h3>
