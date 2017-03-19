@@ -14,9 +14,9 @@ Auth::routes();
 Route::group(['middleware' => 'auth'],
 	function()
 	{
-		Route::resource('todomanager', 'TodomanagerController');
-		Route::post('todomanager/get-all-events', 'TodomanagerController@getCalendarEvents');
 		Route::resource('calendar', 'CalendarController');
+		Route::post('calendar/get-all-events', 'CalendarController@getCalendarEvents');
+		Route::resource('todomanager', 'TodomanagerController');
 	});
 
 Route::get('/home', 'HomeController@index');

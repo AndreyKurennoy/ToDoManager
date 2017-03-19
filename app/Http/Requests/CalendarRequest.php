@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * Date: 16.03.17
  * Time: 9:55
  */
-class TodomanagerRequest extends FormRequest
+class CalendarRequest extends FormRequest
 {
 	public function authorize()
 	{

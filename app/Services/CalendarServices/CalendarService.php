@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\TodoManagerServices;
+namespace App\Services\CalendarServices;
 use App\Models\Task;
 use \MaddHatter\LaravelFullcalendar\Facades\Calendar as FacadeCalendar;
 use MaddHatter\LaravelFullcalendar\Calendar;
@@ -11,7 +11,7 @@ use \Carbon\Carbon;
  * Date: 10.03.17
  * Time: 14:40
  */
-class TodoManagerService
+class CalendarService
 {
 	/**
 	 * Будет получать все таски из БД

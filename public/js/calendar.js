@@ -40,7 +40,7 @@ function getCalendar(calendarData) {
 function getEvents() {
     $.ajax({
         method: 'post',
-        url: BASE_URL + '/todomanager/get-all-events',
+        url: BASE_URL + '/calendar/get-all-events',
         dataType: 'json',
         success: function (data) {
             getCalendar(data.calendar);
@@ -57,9 +57,9 @@ function getEvents() {
 function createPopup(id) {
     var url;
     if(typeof id == 'number') {
-        url = BASE_URL + '/todomanager/' + id;
+        url = BASE_URL + '/calendar/' + id;
     } else {
-        url = BASE_URL + '/todomanager/create/';
+        url = BASE_URL + '/calendar/create/';
     }
 
     $.ajax({
@@ -79,11 +79,11 @@ function saveTask() {
     var data = $('#add-task-form').serializeObject();
     $.ajax({
         method: 'post',
-        url: BASE_URL + '/todomanager/',
+        url: BASE_URL + '/calendar/',
         data: data,
         dataType: 'json',
         success: function (data) {
-            location.href = BASE_URL + '/todomanager/';
+            location.href = BASE_URL + '/calendar/';
         }
     });
 }
@@ -95,11 +95,11 @@ function editTask() {
     var data = $('#add-task-form').serializeObject();
     $.ajax({
         method: 'put',
-        url: BASE_URL + '/todomanager/' + data.id,
+        url: BASE_URL + '/calendar/' + data.id,
         data: data,
         dataType: 'json',
         success: function (data) {
-            location.href = BASE_URL + '/todomanager/';
+            location.href = BASE_URL + '/calendar/';
         }
     });
 }
@@ -111,9 +111,9 @@ function removeTask() {
     var data = $('#add-task-form').serializeObject();
     $.ajax({
         method: 'delete',
-        url: BASE_URL + '/todomanager/' + data.id,
+        url: BASE_URL + '/calendar/' + data.id,
         success: function (data) {
-            location.href = BASE_URL + '/todomanager/';
+            location.href = BASE_URL + '/calendar/';
         }
     });
 }

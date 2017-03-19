@@ -2,10 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TodomanagerRequest;
-use App\Models\Task;
 use App\Services\TodoManagerServices\TodoManagerService;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 /**
  * Контроллер для работы с tod0-manager
