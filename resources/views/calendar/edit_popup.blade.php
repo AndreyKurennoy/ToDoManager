@@ -12,8 +12,7 @@
         <div class="form-group">
             <label for="date" class="col-sm-6 control-label">Дата в формате:</label>
             <div class="col-sm-5">
-                <input class="form-control" name="date" id="date" placeholder="2017-03-15"
-                       value="{{$task->date}}">
+                <input size="16" type="text" name="date" id="date" value="{{$task->date}}" readonly placeholder="2017-03-15" class="form-control form_datetime">
             </div>
         </div>
     </div>

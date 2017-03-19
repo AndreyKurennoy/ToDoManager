@@ -2,6 +2,8 @@
  * Created by moga on 15.03.17.
  */
 
+
+
 /**
  * Отрисовка календаря
  *
@@ -68,6 +70,7 @@ function createPopup(id) {
         dataType: 'json',
         success: function (data) {
             popup('Добавить задание', data.popup);
+            $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd', autoclose: true, pickDate: false, minuteStep: 2});
         }
     });
 }
@@ -122,6 +125,8 @@ function removeTask() {
  * Ждем, когда прогрузится страница
  */
 $(function () {
+
+
     $(document).ready(function () {
         getEvents();
         $(document).on("click", '.btn-add-event', createPopup);

@@ -12,11 +12,13 @@
 
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/app.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/bootstrap-datetimepicker.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/styles.css')}}">
 
         <script src="{{URL::asset('/js/jquery-3.1.1.min.js')}}"></script>
         <script src="{{URL::asset('/js/app.js')}}"></script>
         <script src="{{URL::asset('/js/colorbox/jquery.colorbox.js')}}"></script>
+        <script src="{{URL::asset('/js/bootstrap-datetimepicker.min.js')}}"></script>
         <script>    var BASE_URL = "{{ url('/') }}" </script>
         <script src="{{URL::asset('/js/main.js')}}"></script>
 
