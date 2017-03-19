@@ -11,10 +11,14 @@ class Task extends Model
 	 */
 	protected $table = 'tasks';
 
+	/**
+	 * @var array
+	 */
 	protected $fillable = [
 		'title',
 		'description',
 		'date',
 	    'status',
+	    'user_id',
 	];
 }

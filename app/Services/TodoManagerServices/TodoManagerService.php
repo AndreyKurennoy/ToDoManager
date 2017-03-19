@@ -20,7 +20,7 @@ class TodoManagerService
 	 */
 	public function getTasks()
 	{
-		return Task::all();
+		return Task::where('user_id', \Auth::user()->id)->get();
 	}
 
 	/**
@@ -59,6 +59,7 @@ class TodoManagerService
 	{
 		$task = app(Task::class);
 		$task->fill($data);
+		$task->user_id = \Auth::user()->id;
 		$task->save();
 		return $task;
 	}
