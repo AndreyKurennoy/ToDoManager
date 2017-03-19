@@ -1,5 +1,6 @@
 <?php
 namespace App\Services\CalendarServices;
+
 use App\Models\Task;
 use \MaddHatter\LaravelFullcalendar\Facades\Calendar as FacadeCalendar;
 use MaddHatter\LaravelFullcalendar\Calendar;
@@ -15,7 +16,7 @@ class CalendarService
 {
 	/**
 	 * Будет получать все таски из БД
-	 * 
+	 *
 	 * @return int
 	 */
 	public function getTasks()
@@ -25,7 +26,7 @@ class CalendarService
 
 	/**
 	 * Получение всех тасков и формирование для календаря
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function getCalendarEvent()
@@ -34,7 +35,8 @@ class CalendarService
 
 		$tasks = $this->getTasks();
 
-		foreach($tasks as $task) {
+		foreach($tasks as $task)
+		{
 			$events[] = [
 				'id'     => $task->id,
 				'title'  => $task->title,
@@ -42,6 +44,7 @@ class CalendarService
 				'end'    => $task->date,
 				'allDay' => true,
 				'status' => $task->status,
+				'color'  => $task->date < Carbon::now()->format('Y-m-d') ? $task->status == 1 ? '#008000' : '#8B0000' : '#FF8C00',
 			];
 		}
 
@@ -50,7 +53,7 @@ class CalendarService
 
 	/**
 	 * Сохранение нового таска
-	 * 
+	 *
 	 * @param $data
 	 *
 	 * @return \Illuminate\Foundation\Application|mixed
@@ -61,12 +64,13 @@ class CalendarService
 		$task->fill($data);
 		$task->user_id = \Auth::user()->id;
 		$task->save();
+
 		return $task;
 	}
 
 	/**
 	 * Найти таск
-	 * 
+	 *
 	 * @param $id
 	 *
 	 * @return mixed
@@ -78,7 +82,7 @@ class CalendarService
 
 	/**
 	 * Обновление тасков
-	 * 
+	 *
 	 * @param $id
 	 * @param $data
 	 *
@@ -95,7 +99,7 @@ class CalendarService
 
 	/**
 	 * Удаление тасков
-	 * 
+	 *
 	 * @param $id
 	 *
 	 * @return int
