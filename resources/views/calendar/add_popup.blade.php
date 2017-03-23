@@ -1,17 +1,20 @@
 <form onsubmit='return false;' id='add-task-form' class='add-task-form'>
     <div class="form-inline">
         <div class="form-group">
-            <label for="title" class="col-sm-7 control-label">Название</label>
-            <div class="col-sm-5">
-                <input class="form-control" id="title" name="title">
+            <div class="col-sm-8">
+                <label for="title" class="control-label">Название</label>
+            </div>
+            <div class="col-sm-4">
+                <input  size="16" class="form-control" id="title" name="title">
             </div>
         </div>
     </div>
     <div class="form-inline">
         <div class="form-group">
-            <label for="date" class="col-sm-6 control-label">Дата в формате:</label>
+            <label for="date" class="col-sm-7 control-label">Дата в формате:</label>
             <div class="col-sm-5">
-                <input size="16" type="text" name="date" id="date" value="{{$task->date}}" readonly placeholder="2017-03-15" class="form-control form_datetime">
+                <input size="16" type="text" name="date" id="date" data-format="yyyy-MM-dd" placeholder="2017-03-15"
+                       class="form-control form_datetime">
             </div>
         </div>
     </div>

@@ -70,7 +70,12 @@ function createPopup(id) {
         dataType: 'json',
         success: function (data) {
             popup('Добавить задание', data.popup);
-            $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd', autoclose: true, pickDate: false, minuteStep: 2});
+            $(".form_datetime").datetimepicker({
+                minView: 2,
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+            });
+
         }
     });
 }
@@ -125,8 +130,6 @@ function removeTask() {
  * Ждем, когда прогрузится страница
  */
 $(function () {
-
-
     $(document).ready(function () {
         getEvents();
         $(document).on("click", '.btn-add-event', createPopup);
