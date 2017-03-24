@@ -30,7 +30,7 @@
                                 <li><a href="{{URL('/calendar')}}">Calendar</a></li>
                                 @if(auth()->check())
                                     {{--todo:settings--}}
-                                    <li><a href="{{URL('/get-logout')}}">Logout</a></li>
+                                    <li><a href="{{URL('/logout')}}">Logout</a></li>
                                 @else
                                     <li><a href="{{URL('/login')}}">Login</a></li>
                                     <li><a href="{{URL('/register')}}">Register</a></li>

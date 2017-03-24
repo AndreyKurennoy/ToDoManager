@@ -35,17 +35,16 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function getLogout(Request $request)
     {
-        $this->guard()->logout();
-
-        $request->session()->flush();
-
-        $request->session()->regenerate();
-
+        auth()->logout();
         return redirect('/');
     }
 }

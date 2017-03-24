@@ -10,7 +10,7 @@
 |
 */
 Auth::routes();
-Route::get('get-logout', 'Auth\LoginController@getLogout');
+Route::get('logout', 'Auth\LoginController@getLogout');
 
 
 Route::group(['middleware' => 'auth'],
@@ -22,3 +22,4 @@ Route::group(['middleware' => 'auth'],
 );
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
