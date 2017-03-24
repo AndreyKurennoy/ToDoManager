@@ -10,12 +10,15 @@
 |
 */
 Auth::routes();
+Route::get('get-logout', 'Auth\LoginController@getLogout');
+
 
 Route::group(['middleware' => 'auth'],
 	function()
 	{
 		Route::resource('calendar', 'CalendarController');
 		Route::post('calendar/get-all-events', 'CalendarController@getCalendarEvents');
-	});
+	}
+);
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
