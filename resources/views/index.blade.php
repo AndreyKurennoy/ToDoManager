@@ -32,6 +32,11 @@
     <script src="{{URL::asset('/js/bootstrap-datetimepicker.min.js')}}"></script>
     <script>    var BASE_URL = "{{ url('/') }}" </script>
     <script src="{{URL::asset('/js/main.js')}}"></script>
+
+
+    @yield('head')
+
+
 </head>
 <body>
 

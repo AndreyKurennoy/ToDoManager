@@ -46,7 +46,7 @@ function getEvents() {
         dataType: 'json',
         success: function (data) {
             getCalendar(data.calendar);
-            $('#calendar > div.fc-toolbar > div.fc-right > button').before('<div><a href="#" class="btn btn-add-event">Add Event</a></div>');
+            $('#calendar > div.fc-toolbar > div.fc-right > button').before('<div><a href="#" class="btn btn-add-event">Добавить задание</a></div>');
         }
     });
 }
