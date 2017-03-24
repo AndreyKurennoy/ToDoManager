@@ -15,8 +15,8 @@
                         <div class="nav-collapse collapse navbar-responsive-collapse">
                             <ul class="nav">
                                 <li class="active"><a href="/">Home</a></li>
-                                <li><a href="{{URL('/calendar')}}">Calendar</a></li>
                                 @if(auth()->check())
+                                    <li><a href="{{URL('/calendar')}}">Calendar</a></li>
                                     {{--todo:settings--}}
                                     <li><a href="{{URL('/logout')}}">Logout</a></li>
                                 @else
