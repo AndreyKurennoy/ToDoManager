@@ -12,9 +12,9 @@
 function getCalendar(calendarData) {
     $('#calendar').fullCalendar({
         header: {
-            left: 'title',
+            left: 'title month,agendaWeek,agendaDay',
             center: '',
-            right: 'today prev,next'
+            right: 'today, prev,next'
         },
         monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
         monthNamesShort: ['Янв.', 'Фев.', 'Март', 'Апр.', 'Май', 'Июнь', 'Июль', 'Авг.', 'Сент.', 'Окт.', 'Ноя.', 'Дек.'],
@@ -32,6 +32,7 @@ function getCalendar(calendarData) {
         eventClick: function (calEvent, jsEvent, view) {
             createPopup(calEvent.id);
         },
+        firstDay: '1',
         events: calendarData,
     });
 }
