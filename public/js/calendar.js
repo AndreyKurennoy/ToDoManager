@@ -12,7 +12,9 @@
 function getCalendar(calendarData) {
     $('#calendar').fullCalendar({
         header: {
-            left: 'title month,agendaWeek,agendaDay',
+            left: 'title ' +
+            // 'month,agendaWeek,agendaDay' +
+            '',
             center: '',
             right: 'today, prev,next'
         },

@@ -14,12 +14,12 @@
                         <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
                         <div class="nav-collapse collapse navbar-responsive-collapse">
                             <ul class="nav">
-                                <li class="active"><a href="/">Home</a></li>
                                 @if(auth()->check())
                                     <li><a href="{{URL('/calendar')}}">Calendar</a></li>
                                     {{--todo:settings--}}
                                     <li><a href="{{URL('/logout')}}">Logout</a></li>
                                 @else
+                                    <li class="active"><a href="/">Home</a></li>
                                     <li><a href="{{URL('/login')}}">Login</a></li>
                                     <li><a href="{{URL('/register')}}">Register</a></li>
                                 @endif
