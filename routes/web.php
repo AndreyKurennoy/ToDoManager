@@ -10,12 +10,16 @@
 |
 */
 Auth::routes();
-
-Route::resource('todomanager', 'TodomanagerController');
-Route::post('todomanager/get-all-events', 'TodomanagerController@getCalendarEvents');
-Route::resource('calendar', 'CalendarController');
+Route::get('logout', 'Auth\LoginController@getLogout');
 
 
+Route::group(['middleware' => 'auth'],
+	function()
+	{
+		Route::resource('calendar', 'CalendarController');
+		Route::post('calendar/get-all-events', 'CalendarController@getCalendarEvents');
+	}
+);
 
-
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');

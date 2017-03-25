@@ -2,6 +2,8 @@
  * Created by moga on 15.03.17.
  */
 
+
+
 /**
  * Отрисовка календаря
  *
@@ -28,7 +30,7 @@ function getCalendar(calendarData) {
         defaultView: 'month',
         editable: true,
         eventClick: function (calEvent, jsEvent, view) {
-            editTask(calEvent);
+            createPopup(calEvent.id);
         },
         events: calendarData,
     });
@@ -40,46 +42,86 @@ function getCalendar(calendarData) {
 function getEvents() {
     $.ajax({
         method: 'post',
-        url: BASE_URL + '/todomanager/get-all-events',
+        url: BASE_URL + '/calendar/get-all-events',
         dataType: 'json',
         success: function (data) {
             getCalendar(data.calendar);
-            $('#calendar > div.fc-toolbar > div.fc-right > button').before('<div><a href="#" class="btn btn-add-event">Add Event</a></div>');
+            $('#calendar > div.fc-toolbar > div.fc-right > button').before('<div><a href="#" class="btn btn-add-event">Добавить задание</a></div>');
         }
     });
 }
 
 /**
- * Попап с редактированием/просмотром записи
+ * Вызов попапа при создании или обновлении таска
+ * 
  * @param id
- * @param title
- * @param data
  */
-function editTask(id) {
-    console.log(id);
-}
+function createPopup(id) {
+    var url;
+    if(typeof id == 'number') {
+        url = BASE_URL + '/calendar/' + id;
+    } else {
+        url = BASE_URL + '/calendar/create/';
+    }
 
-function createPopup() {
-    // 
     $.ajax({
         method: 'get',
-        url: BASE_URL + '/todomanager/create',
+        url: url,
         dataType: 'json',
         success: function (data) {
             popup('Добавить задание', data.popup);
+            $(".form_datetime").datetimepicker({
+                minView: 2,
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+            });
+
         }
     });
 }
 
+/**
+ * Сохранение нового таска
+ */
 function saveTask() {
     var data = $('#add-task-form').serializeObject();
     $.ajax({
         method: 'post',
-        url: BASE_URL + '/todomanager/',
+        url: BASE_URL + '/calendar/',
         data: data,
         dataType: 'json',
         success: function (data) {
-            location.href = BASE_URL + '/todomanager/';
+            location.href = BASE_URL + '/calendar/';
+        }
+    });
+}
+
+/**
+ * Обновление существующего таска
+ */
+function editTask() {
+    var data = $('#add-task-form').serializeObject();
+    $.ajax({
+        method: 'put',
+        url: BASE_URL + '/calendar/' + data.id,
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+            location.href = BASE_URL + '/calendar/';
+        }
+    });
+}
+
+/**
+ * Удаление таска
+ */
+function removeTask() {
+    var data = $('#add-task-form').serializeObject();
+    $.ajax({
+        method: 'delete',
+        url: BASE_URL + '/calendar/' + data.id,
+        success: function (data) {
+            location.href = BASE_URL + '/calendar/';
         }
     });
 }
@@ -92,6 +134,8 @@ $(function () {
         getEvents();
         $(document).on("click", '.btn-add-event', createPopup);
         $(document).on("click", '.save-task', saveTask);
+        $(document).on("click", '.edit-task', editTask);
+        $(document).on("click", '.remove', removeTask);
     });
 });
 

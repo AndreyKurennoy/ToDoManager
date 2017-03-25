@@ -1,3 +1,12 @@
+/**
+ * Ждем, когда прогрузится страница
+ */
+$(function () {
+    $(document).ready(function () {
+        $(document).on("click", '.modal-backdrop', popup_close);
+    });
+});
+
 
 function popup(title,content,width)
 {

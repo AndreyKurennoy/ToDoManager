@@ -31,4 +31,12 @@ button.fc-next-button.fc-button.fc-state-default.fc-corner-right,
     text-align: center;
 }
 
+input {
+    margin: 10px;
+}
+
+.login-label {
+    padding-top: 15px !important;
+}
+
 
