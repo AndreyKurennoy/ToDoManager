@@ -31,8 +31,7 @@
     <div class="form-inline">
         <div class="form-group">
             <div class="checkbox">
-                <label><input type="checkbox" name="status" {{$task->status == 1 ? 'checked="checked"' : ''}}> Я -
-                    выполненая задача! </label>
+                <label><input type="checkbox" name="status" {{$task->status == 1 ? 'checked="checked"' : ''}}> Задача выполнена </label>
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
     <div class="form-inline">
         <div class="form-group">
             <div class="checkbox">
-                <label><input type="checkbox" name="status"> Я - выполненая задача! </label>
+                <label><input type="checkbox" name="status"> Задача выполнена </label>
             </div>
         </div>
     </div>
