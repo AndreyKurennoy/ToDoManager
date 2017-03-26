@@ -34,5 +34,5 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-default save-task">Send invitation</button>
+    <button type="submit" class="btn btn-default save-task">Добавить задачу</button>
 </form>

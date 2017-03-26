@@ -37,7 +37,7 @@
     </div>
 
     @if($task->date >= date('Y-m-d'))
-        <button type="submit" class="btn btn-default edit-task">Send invitation</button>
-        <button class="btn btn-danger remove">Remove</button>
+        <button class="btn btn-danger remove">Удалить задачу</button>
+        <button type="submit" class="btn btn-default edit-task">Обновить задачу</button>
     @endif
 </form>
