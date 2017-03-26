@@ -21,4 +21,9 @@ class Task extends Model
 	    'status',
 	    'user_id',
 	];
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }
