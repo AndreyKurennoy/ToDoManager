@@ -12,10 +12,9 @@
     </div>
     <div class="form-inline">
         <div class="form-group">
-            <label for="date" class="col-sm-7 control-label">Дата в формате:</label>
+            <label for="date" class="col-sm-7 control-label">Дата</label>
             <div class="col-sm-5">
-                <input size="16" type="text" name="date" id="date" value="{{$task->date}}" data-format="yyyy-MM-dd"
-                       placeholder="2017-03-15" class="form-control form_datetime" @if($task->date < date('Y-m-d')) disabled @endif>
+                <input size="16" id="date" name="date" value="{{$task->date}}" data-format="yyyy-MM-dd" placeholder="2017-03-15" class="form-control form_datetime" @if($task->date < date('Y-m-d')) disabled @endif>
             </div>
         </div>
     </div>

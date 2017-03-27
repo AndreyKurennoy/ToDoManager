@@ -2,10 +2,11 @@
     margin: 25px;
 }
 
-td.fc-event-container > a {
+td.fc-event-container > a, textarea {
     border-radius: 0;
 }
 
+button.btn,
 #calendar > div.fc-toolbar > div.fc-right > button,
 button.fc-prev-button.fc-button.fc-state-default.fc-corner-left,
 button.fc-next-button.fc-button.fc-state-default.fc-corner-right,
@@ -27,12 +28,20 @@ button.fc-next-button.fc-button.fc-state-default.fc-corner-right,
     cursor: pointer;
 }
 
+button.btn-danger {
+    background-color: rgba(195, 0, 0, 0.66);
+}
+
+.btn-add-event {
+    padding-top: 5px;
+}
+
 .fc th {
     text-align: center;
 }
 
-input {
-    margin: 10px;
+input, textarea {
+    margin-bottom: 10px !important;
 }
 
 .login-label {
