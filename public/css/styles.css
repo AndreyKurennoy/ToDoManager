@@ -2,10 +2,6 @@
     margin: 25px;
 }
 
-td.fc-event-container > a, textarea {
-    border-radius: 0;
-}
-
 button.btn,
 #calendar > div.fc-toolbar > div.fc-right > button,
 button.fc-prev-button.fc-button.fc-state-default.fc-corner-left,
@@ -40,9 +36,25 @@ button.btn-danger {
     text-align: center;
 }
 
-input, textarea {
+td.fc-event-container > a, input, textarea,
+#email, #password, #password-confirm, #name
+{
+    border-radius: 0;
     margin-bottom: 10px !important;
 }
+
+#email, #password, #password-confirm, #name {
+    margin: 10px;
+}
+
+.checkbox-login{
+    margin-left:150px;
+}
+
+.btn-register {
+    margin-left:170px;
+}
+
 
 .login-label {
     padding-top: 15px !important;
