@@ -10,8 +10,8 @@
                 @else
                     <a class="brand" href="{{URL('/')}}">
                 @endif
-                        <img src="{{URL::asset('fornax/img/logo.png')}}"/>
-                        {{--<h2>planmee</h2>--}}
+                        {{--<img src="{{URL::asset('fornax/img/logo.png')}}"/>--}}
+                        <h2>Planmee</h2>
                     </a>
             </div>
             <!-- /LOGO -->
