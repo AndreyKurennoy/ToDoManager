@@ -6,7 +6,7 @@
             <!--LOGO-->
             <div class="span3">
                 @if(auth()->check())
-                    <a class="brand" href="{{URL('/calendar')}}">
+                    <a class="brand" href="{{URL('/history/create')}}">
                 @else
                     <a class="brand" href="{{URL('/')}}">
                 @endif
@@ -26,7 +26,8 @@
                             <ul class="nav">
                                 @if(auth()->check())
                                     @if(auth()->user()->is_admin == 1)
-
+                                        {{--todo: здесь будет админка--}}
+                                        {{--<li><a href="{{URL('/admin/')}}">Админка</a></li>--}}
                                     @endif
                                     <li><a href="{{URL('/calendar')}}">Календарь</a></li>
                                     {{--todo:settings--}}
@@ -36,18 +37,6 @@
                                     <li><a href="{{URL('/login')}}">Войти</a></li>
                                     <li><a href="{{URL('/register')}}">Регистрация</a></li>
                                 @endif
-                                    <li><a href="{{URL('/history')}}">История</a></li>
-
-
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                    <li><a href="#">History</a></li>
-                                    <li><a href="#">Team</a></li>
-                                    </ul>
-
-                                </li>
-
                             </ul>
                         </div>
                     </div>
