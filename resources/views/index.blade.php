@@ -44,10 +44,11 @@
        <link href="{{URL::asset('fornax/css/bootstrap.css')}}" rel="stylesheet">
        <link href="{{URL::asset('fornax/css/bootstrap-responsive.css')}}" rel="stylesheet">
        <link href="{{URL::asset('fornax/css/style.css')}}" rel="stylesheet">
+       <link href="{{URL::asset('fornax/css/font-awesome.min.css')}}" rel="stylesheet">
 
        <!--Font-->
        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
-
+       <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
 
 
        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -59,10 +60,9 @@
        <!-- SCRIPT
        ============================================================-->
        <script src="http://code.jquery.com/jquery.js"></script>
-       <script src={{URL::asset('"js/bootstrap.min.js"')}}></script>
+       <script src="{{URL::asset('fornax/js/bootstrap.min.js')}}"></script>
 </head>
 <body>
-
 
     @include('layouts.header')
 
