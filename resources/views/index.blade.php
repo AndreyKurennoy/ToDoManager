@@ -2,7 +2,7 @@
 <html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
-    <title>@yield('title')</title>
+    <meta name="google-site-verification" content="4E1apqAcmjExv_U0FTFspqYHFgJMLyQMo1idOKB0ZhQ" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/bootstrap-datetimepicker.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/styles.css')}}">
     <link href="{{URL::asset('fornax/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+
+    <title>@yield('title')</title>
 
     <!--Font-->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
