@@ -25,7 +25,7 @@
                         <td>{{$item->date}}</td>
                         <td>{{$item->description}}</td>
                         @if(auth()->check() && auth()->user()->is_admin == 1)
-                            <th><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> / <a href="{{URL('/history/remove/'.$item['id'])}}"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
+                            <th><a href="#" data-id="{{$item['id']}}" id="edit-news"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color: black"></i></a> <a href="{{URL('/history/remove/'.$item['id'])}}" id="del-news"><i class="fa fa-trash" aria-hidden="true" style="color: darkred"></i></a></th>
                         @endif
                     </tr>
                 @endforeach

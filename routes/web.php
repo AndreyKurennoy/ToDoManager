@@ -27,7 +27,8 @@ Route::group(['middleware' => 'admin'],
 	{
 		Route::get('history/remove/{id}', 'HistoryController@remove');
 		Route::get('history/{id}', 'HistoryController@show');
-		Route::post('history/{id}', 'HistoryController@edit');
+//		Route::post('history/{id}', 'HistoryController@edit');
+		Route::resource('history', 'HistoryController');
 //		Route::resource('admin', 'AdminController'); // на будущее
 	}
 );

@@ -3,19 +3,20 @@
  */
 
 
-
 /**
- * Вызов попапа при создании или обновлении таска
+ * Вызов попапа при создании или обновлении новости
  *
  * @param id
  */
 function createPopup(id) {
-    console.log(123123123)
     var url;
+    var title;
     if (typeof id == 'number') {
-        // url = BASE_URL + '/history/' + id;
+        url = BASE_URL + '/history/' + id;
+        title = 'Редактировать новость';
     } else {
-        url = BASE_URL + '/history/create/';
+        url = BASE_URL + '/history/show/';
+        title = 'Добавить новость';
     }
 
     $.ajax({
@@ -23,42 +24,63 @@ function createPopup(id) {
         url: url,
         dataType: 'json',
         success: function (data) {
-            popup('Добавить новость');
+            popup('Добавить новость', data.popup);
+            $(".form_datetime").datetimepicker({
+                minView: 2,
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+            });
         }
     });
 }
 
 /**
- * Сохранение нового таска
+ * Сохранение новой новости
  */
-function saveTask() {
-    var data = $('#add-task-form').serializeObject();
+function saveNews() {
+    var data = $('#history-form').serializeObject();
     $.ajax({
         method: 'post',
-        url: BASE_URL + '/calendar/',
+        url: BASE_URL + '/history/',
         data: data,
         dataType: 'json',
         success: function (data) {
-            location.href = BASE_URL + '/calendar/';
+            location.href = BASE_URL + '/history/';
+        }
+    });
+}
+/**
+ * Обновление новости
+ */
+function updateNews() {
+    var data = $('#history-form').serializeObject();
+    $.ajax({
+        method: 'put',
+        url: BASE_URL + '/history/' + data.id,
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+            location.href = BASE_URL + '/history/';
+        },
+        error: function (data) {
+            console.log('erororor', data);
         }
     });
 }
 
 /**
- * Обновление существующего таска
+ * Обновление существующего новости
  */
-function editTask(id, data) {
-    if (id === undefined) {
-        var data = $('#add-task-form').serializeObject();
-        var id = data.id;
-    }
+function editNews() {
+    var data = $('#news-form').serializeObject();
+
     $.ajax({
         method: 'put',
-        url: BASE_URL + '/calendar/' + id,
+        url: BASE_URL + '/history/' + id,
         data: data,
         dataType: 'json',
         success: function (data) {
-            location.href = BASE_URL + '/calendar/';
+            location.href = BASE_URL + '/history/';
         }
     });
 }
@@ -68,15 +90,13 @@ function editTask(id, data) {
  */
 $(function () {
     $(document).ready(function () {
-        $(document).on("click", '#add-news', function () {
-            console.log(123321);
-            createPopup();
+        $(document).on("click", '#add-news', createPopup);
+        $(document).on("click", '.save-news', saveNews);
+        $(document).on("click", '.update-news', updateNews);
+        $(document).on("click", '#edit-news', function() {
+            createPopup($(this).data('id'));
         });
-        $(document).on("click", '.save-task', saveTask);
-        $(document).on("click", '.edit-task', function () {
-            editTask()
-        });
-        $(document).on("click", '.remove', removeTask);
+        // $(document).on("click", '.remove', removeTask);
     });
 });
 
