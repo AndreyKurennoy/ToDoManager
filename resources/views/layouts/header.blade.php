@@ -5,14 +5,10 @@
         <div class="row">
             <!--LOGO-->
             <div class="span3">
-                @if(auth()->check())
-                    <a class="brand" href="{{URL('/history/create')}}">
-                @else
-                    <a class="brand" href="{{URL('/')}}">
-                @endif
-                        {{--<img src="{{URL::asset('fornax/img/logo.png')}}"/>--}}
-                        <h2>Planmee</h2>
-                    </a>
+                <a class="brand" href="{{URL('/history/')}}">
+                    {{--<img src="{{URL::asset('fornax/img/logo.png')}}"/>--}}
+                    <h2>Planmee</h2>
+                </a>
             </div>
             <!-- /LOGO -->
 
@@ -24,6 +20,7 @@
                                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
                         <div class="nav-collapse collapse navbar-responsive-collapse">
                             <ul class="nav">
+                                <li><a href="{{URL('/history')}}">История</a></li>
                                 @if(auth()->check())
                                     @if(auth()->user()->is_admin == 1)
                                         {{--todo: здесь будет админка--}}
