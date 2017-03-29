@@ -11,6 +11,8 @@
 */
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@getLogout');
+Route::get('/social_login/{provider}', 'SocialController@login');
+Route::get('/social_login/callback/{provider}', 'SocialController@callback');
 
 
 Route::group(['middleware' => 'auth'],

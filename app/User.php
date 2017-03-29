@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function createBySocialProvider($providerUser)
+    {
+        return self::create([
+                                'email' => $providerUser->getEmail(),
+                                'username' => $providerUser->getNickname(),
+                                'name' => $providerUser->getName(),
+                                'password' => bcrypt(rand(10, 20))
+                            ]);
+    }
 }

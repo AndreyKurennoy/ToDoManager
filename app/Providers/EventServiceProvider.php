@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use SocialiteProviders\Manager\SocialiteWasCalled;
+use SocialiteProviders\VKontakte\VKontakteExtendSocialite;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
+        ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            // Порписываем здесь обработку события провайдерами от SocialiteProviders
+            'SocialiteProviders\VKontakte\VKontakteExtendSocialite@handle',
         ],
     ];
 
