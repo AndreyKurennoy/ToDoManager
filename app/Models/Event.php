@@ -6,6 +6,7 @@ namespace App\Models;
  * Date: 11.03.17
  * Time: 12:19
  */
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model implements \MaddHatter\LaravelFullcalendar\Event

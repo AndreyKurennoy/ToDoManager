@@ -11,8 +11,9 @@
     <link href="{{URL::asset('fornax/css/bootstrap-responsive.css')}}" rel="stylesheet">
     <link href="{{URL::asset('fornax/css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/app.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/styles.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/bootstrap-datetimepicker.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/styles.css')}}">
+    <link href="{{URL::asset('fornax/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
     <!--Font-->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -40,11 +41,11 @@
 </head>
 <body>
 
-    @include('layouts.header')
+@include('layouts.header')
 
-    @yield('content')
+@yield('content')
 
-    @include('layouts.footer')
+@include('layouts.footer')
 
 </body>
 </html>

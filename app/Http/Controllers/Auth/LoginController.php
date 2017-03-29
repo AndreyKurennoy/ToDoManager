@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/calendar';
 
     /**
      * Create a new controller instance.
@@ -45,6 +45,6 @@ class LoginController extends Controller
     public function getLogout(Request $request)
     {
         auth()->logout();
-        return redirect('/');
+        return redirect('/calendar');
     }
 }

@@ -3,7 +3,6 @@
  */
 
 
-
 /**
  * Отрисовка календаря
  *
@@ -12,9 +11,11 @@
 function getCalendar(calendarData) {
     $('#calendar').fullCalendar({
         header: {
-            left: 'title',
+            left: 'title ' +
+            // 'month,agendaWeek,agendaDay' +
+            '',
             center: '',
-            right: 'today prev,next'
+            right: 'today, prev,next'
         },
         monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
         monthNamesShort: ['Янв.', 'Фев.', 'Март', 'Апр.', 'Май', 'Июнь', 'Июль', 'Авг.', 'Сент.', 'Окт.', 'Ноя.', 'Дек.'],
@@ -32,7 +33,18 @@ function getCalendar(calendarData) {
         eventClick: function (calEvent, jsEvent, view) {
             createPopup(calEvent.id);
         },
+        firstDay: '1',
         events: calendarData,
+        eventDrop: function (event, delta, revertFunc) {
+            editTask(event.id,
+                {
+                    'id': event.id,
+                    'date': event.start.format(),
+                    'title': event.source.events[0].title,
+                    'description': event.source.events[0].description,
+                    'status': event.source.events[0].status
+                });
+        }
     });
 }
 
@@ -53,12 +65,12 @@ function getEvents() {
 
 /**
  * Вызов попапа при создании или обновлении таска
- * 
+ *
  * @param id
  */
 function createPopup(id) {
     var url;
-    if(typeof id == 'number') {
+    if (typeof id == 'number') {
         url = BASE_URL + '/calendar/' + id;
     } else {
         url = BASE_URL + '/calendar/create/';
@@ -99,11 +111,14 @@ function saveTask() {
 /**
  * Обновление существующего таска
  */
-function editTask() {
-    var data = $('#add-task-form').serializeObject();
+function editTask(id, data) {
+    if (id === undefined) {
+        var data = $('#add-task-form').serializeObject();
+        var id = data.id;
+    }
     $.ajax({
         method: 'put',
-        url: BASE_URL + '/calendar/' + data.id,
+        url: BASE_URL + '/calendar/' + id,
         data: data,
         dataType: 'json',
         success: function (data) {
@@ -134,7 +149,9 @@ $(function () {
         getEvents();
         $(document).on("click", '.btn-add-event', createPopup);
         $(document).on("click", '.save-task', saveTask);
-        $(document).on("click", '.edit-task', editTask);
+        $(document).on("click", '.edit-task', function () {
+            editTask()
+        });
         $(document).on("click", '.remove', removeTask);
     });
 });

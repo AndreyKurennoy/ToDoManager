@@ -9,6 +9,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@getLogout');
 Route::get('/social_login/{provider}', 'SocialController@login');
@@ -23,7 +24,19 @@ Route::group(['middleware' => 'auth'],
 	}
 );
 
+Route::group(['middleware' => 'admin'],
+	function()
+	{
+		Route::get('history/remove/{id}', 'HistoryController@remove');
+		Route::get('history/{id}', 'HistoryController@show');
+//		Route::post('history/{id}', 'HistoryController@edit');
+		Route::resource('history', 'HistoryController');
+//		Route::resource('admin', 'AdminController'); // на будущее
+	}
+);
+
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('history', 'HistoryController@index');
 
 Route::resource('category', 'CategoryController');
