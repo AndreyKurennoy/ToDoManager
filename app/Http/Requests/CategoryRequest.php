@@ -20,7 +20,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'title'       => "required|min:1|max:64",
-            'date'        => "required|date",
+            'color'        => "required|min:1|max:64",
         ];
     }
 
@@ -31,10 +31,7 @@ class CategoryRequest extends FormRequest
     {
         $data = $this->all();
 
-        $data['status'] = isset($data['status']) ? 1 : 0;
-
         $this->getInputSource()->replace($data);
-
         return parent::getValidatorInstance();
     }
 

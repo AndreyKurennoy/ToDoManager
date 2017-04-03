@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Services\CategoryServices\CategoryService;
 
@@ -20,19 +20,10 @@ class CategoryController extends Controller
 
     public function index()
     {
-
-        $test = Category::where('user_id', \Auth::user()->id)->get();
-
-        return view('category.category', array('test' => $test));
+        $categories = $this->categoryService->getCategories();
+        return view('category.category', array('categories' => $categories));
     }
 
-//    public function saveCategory($data)
-//    {
-//        $category = app(Category::class);
-//        $category->fill($data);
-//        $category->save();
-//
-//    }
 
     public function store(CategoryRequest $request)
     {
@@ -40,4 +31,5 @@ class CategoryController extends Controller
 
         return \Response::json($save);
     }
+
 }

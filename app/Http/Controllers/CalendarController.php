@@ -45,6 +45,7 @@ class CalendarController extends Controller
 	public function getCalendarEvents()
 	{
 		$calendar = $this->calendarService->getCalendarEvent();
+
 		return \Response::json(['calendar' => $calendar]);
 	}
 

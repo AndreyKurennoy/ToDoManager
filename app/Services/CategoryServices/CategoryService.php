@@ -8,9 +8,7 @@
 namespace App\Services\CategoryServices;
 
 use App\Models\Category;
-use \MaddHatter\LaravelFullcalendar\Facades\Calendar as FacadeCalendar;
-use MaddHatter\LaravelFullcalendar\Calendar;
-use \Carbon\Carbon;
+
 class CategoryService
 {
 
@@ -21,13 +19,16 @@ class CategoryService
 
     public function saveTask($data)
     {
-//        dd($data);
+
         $category = app(Category::class);
         $category->fill($data);
         $category->user_id = \Auth::user()->id;
+        $category->created_at = time();
         $category->save();
 
         return $category;
     }
+
+
 
 }

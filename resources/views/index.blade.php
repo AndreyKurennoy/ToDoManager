@@ -34,6 +34,7 @@
     <script src="{{URL::asset('/js/main.js')}}"></script>
 
 
+
     @yield('head')
 
 

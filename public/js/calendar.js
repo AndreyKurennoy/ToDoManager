@@ -87,7 +87,7 @@ function saveTask() {
     var data = $('#add-task-form').serializeObject();
     $.ajax({
         method: 'post',
-        url: BASE_URL + '/calendar/',
+        url: BASE_URL + '/calendar',
         data: data,
         dataType: 'json',
         success: function (data) {
