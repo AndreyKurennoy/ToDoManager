@@ -31,6 +31,10 @@
     <select name="category_id">
         <option selected value="">Категория</option>
         @foreach($categories as $value)
+            @if($task->category_id == $value->id){
+            <option selected style="background-color: {{$value->color}};" value="{{$value->id}}">{{$value->title}}</option>
+            }
+            @endif
             <option style="background-color: {{$value->color}};" value="{{$value->id}}">{{$value->title}}</option>
         @endforeach
     </select>
