@@ -2,9 +2,11 @@
 namespace App\Services\CalendarServices;
 
 use App\Models\Task;
+use App\Models\Category;
 use \MaddHatter\LaravelFullcalendar\Facades\Calendar as FacadeCalendar;
 use MaddHatter\LaravelFullcalendar\Calendar;
 use \Carbon\Carbon;
+use App\Services\CategoryServices\CategoryService;
 
 /**
  * Created by PhpStorm.
@@ -19,6 +21,15 @@ class CalendarService
 	 *
 	 * @return int
 	 */
+    public $categoryService;
+
+    public function __construct( CategoryService $categoryService)
+    {
+//        $this->calendarService = $calendarService;
+        $this->categoryService = $categoryService;
+    }
+
+
 	public function getTasks()
 	{
 		return Task::where('user_id', \Auth::user()->id)->get();
@@ -37,6 +48,8 @@ class CalendarService
 
 		foreach($tasks as $task)
 		{
+            $category_color = $this->categoryService->getCategory($task->category_id);
+
 			$events[] = [
 				'id'     => $task->id,
 				'title'  => $task->title,
@@ -44,7 +57,7 @@ class CalendarService
 				'end'    => $task->date,
 				'allDay' => true,
 				'status' => $task->status,
-				'color'  => $task->date < Carbon::now()->format('Y-m-d') ? $task->status == 1 ? '#008000' : '#8B0000' : '#FF8C00',
+                'color' => $category_color !== 0 ? $category_color : '008000'
 			];
 		}
 
@@ -92,6 +105,7 @@ class CalendarService
 	{
 		$task = $this->findTask($id);
 		$task->fill($data);
+//        dd($task);
 		$task->save();
 
 		return $task;

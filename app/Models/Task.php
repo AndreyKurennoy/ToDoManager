@@ -20,6 +20,7 @@ class Task extends Model
 		'date',
 	    'status',
 	    'user_id',
+	    'category_id',
 	];
 
     public function getTitle()

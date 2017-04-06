@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CalendarRequest;
 use App\Services\CalendarServices\CalendarService;
+use App\Http\Requests\CategoryRequest;
+use App\Services\CategoryServices\CategoryService;
 
 
 /**
@@ -14,17 +16,21 @@ class CalendarController extends Controller
 	/**
 	 * Сервис задач
 	 * @var calendarService
+	 * @var categoryService
 	 */
 	public $calendarService;
+    public $categoryService;
 
 	/**
 	 * CalendarController constructor.
 	 *
 	 * @param CalendarService $calendarService
+	 * @param CategoryService $categoryService
 	 */
-	public function __construct(CalendarService $calendarService)
+	public function __construct(CalendarService $calendarService, CategoryService $categoryService)
 	{
 		$this->calendarService = $calendarService;
+        $this->categoryService = $categoryService;
 	}
 
 	/**
@@ -56,9 +62,10 @@ class CalendarController extends Controller
 	 */
 	public function create()
 	{
+        $categories = $this->categoryService->getCategories();
 		$return = [
 			'popup' => \View::make(
-				'calendar.add_edit_task_popup', []
+				'calendar.add_edit_task_popup', ['categories' => $categories]
 			)->render(),
 		];
 
@@ -89,12 +96,14 @@ class CalendarController extends Controller
 	public function show($id)
 	{
 		$task = $this->calendarService->findTask($id);
+        $categories = $this->categoryService->getCategories();
 
 		$return = [
 			'popup' => \View::make(
 				'calendar.add_edit_task_popup',
 				[
 					'task' => $task,
+                    'categories' => $categories
 				]
 			)->render(),
 		];
