@@ -28,6 +28,16 @@
             </div>
         </div>
     </div>
+    <select name="category_id">
+        <option selected value="">Категория</option>
+        @foreach($categories as $value)
+            @if($task->category_id == $value->id){
+            <option selected style="background-color: {{$value->color}};" value="{{$value->id}}">{{$value->title}}</option>
+            }
+            @endif
+            <option style="background-color: {{$value->color}};" value="{{$value->id}}">{{$value->title}}</option>
+        @endforeach
+    </select>
     <div class="form-inline">
         <div class="form-group">
             <div class="checkbox">
@@ -41,4 +51,6 @@
         <button type="submit" class="btn btn-default edit-task">Send invitation</button>
         <button class="btn btn-danger remove">Remove</button>
     @endif
+
+
 </form>
